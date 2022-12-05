@@ -1,21 +1,56 @@
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addTodo } from "../../redux/modules/TodoHandler";
 import styled from "styled-components";
 import CustomButton from "./CustomButton";
 
 function AddTodo() {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [done] = useState(false);
+  const [id, setId] = useState(3);
+  const dispatch = useDispatch();
+  const todos = useSelector((state) => state.todos);
+
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    if (title.trim() === "" || content.trim() === "") {
+      alert("칸을 채워주세요!!");
+    } else {
+      setId(id + 1);
+      const NewTodo = {
+        id: id,
+        title: title,
+        content: content,
+        done: done,
+      };
+      console.log(NewTodo);
+      dispatch(addTodo(NewTodo));
+      setTitle("");
+      setContent("");
+    }
+  };
+
   return (
     <Section>
-      <Form>
+      <Form onSubmit={onSubmitHandler}>
         <p>제목:</p>
         <input
+          value={title}
           placeholder="제목을 입력해주세요"
           // 인풋 이벤트로 들어온 입력 값을 title의 값으로 업데이트
-
-          autofocus
+          onChange={(event) => {
+            setTitle(event.target.value);
+          }}
         />
         <p>내용:</p>
         <input
+          value={content}
           placeholder="내용을 입력해주세요"
           // 인풋 이벤트로 들어온 입력 값을 content의 값으로 업데이트
+          onChange={(event) => {
+            setContent(event.target.value);
+          }}
         />
         <CustomButton
           width="200px"
@@ -24,6 +59,7 @@ function AddTodo() {
           border="none"
           color="blue"
           borderRadius="30px"
+          onClick={onSubmitHandler}
         >
           추가하기
         </CustomButton>
