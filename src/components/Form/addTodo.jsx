@@ -10,7 +10,7 @@ function AddTodo() {
   const [done] = useState(false);
   const [id, setId] = useState(3);
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todos);
+  const todoss = useSelector((state) => state.todos);
 
   console.log(todoss);
   const onSubmitHandler = (event) => {
@@ -25,7 +25,7 @@ function AddTodo() {
         content: content,
         done: done,
       };
-      console.log(NewTodo);
+      // console.log(NewTodo);
       dispatch(addTodo(NewTodo));
       setTitle("");
       setContent("");

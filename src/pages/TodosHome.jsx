@@ -2,12 +2,13 @@ import React from "react";
 import AddTodo from "../components/Form/AddTodo";
 import TodoContent from "../components/TodoContent/TodoContent";
 import styled from "styled-components";
+
 import { useSelector } from "react-redux";
 
 function TodosHome() {
   const { todos } = useSelector((state) => state.todos);
 
-  console.log(todos);
+  // console.log(todos); 데이터를 잘 받아오고 있는 지 확인
   return (
     <div>
       <AddTodo />
@@ -15,7 +16,7 @@ function TodosHome() {
         <h2>😎 이거 해야 함!!!</h2>
         <ul>
           {todos.map((todo) => {
-            console.log(todo.done);
+            // console.log(todo.done);
             if (todo.done === false) {
               return <TodoContent todo={todo} key={todo.id} />;
             } else {
@@ -48,15 +49,20 @@ const Section = styled.section`
   background-color: #ffbc4a;
   border-radius: 50px 50px 50px 50px;
   margin: 3% auto;
-  padding: 1% 1% 1% 1%;
+  padding: 1% 1% 1% 0%;
   max-width: 1200px;
   min-width: 800px;
   ul {
     width: 100%;
     display: flex;
     flex-direction: row;
+    margin: 0 auto;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 9px;
+  }
+  h2 {
+    padding: 2% 2%;
+    margin: 0 0 0 0;
   }
 `;
 
