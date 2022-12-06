@@ -8,6 +8,7 @@ function CustomButton(props) {
     border,
     height,
     borderRadius,
+    cursor,
   } = props;
   if (color) {
     return (

@@ -1,77 +1,42 @@
 import React from "react";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
-
-import { useNavigate } from "react-router-dom";
-import { deleteTodo, doneTodo } from "../../redux/modules/TodoHandler";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteTodo } from "../../redux/modules/TodoHandler";
 
 function TodoContent(props) {
-  const dispatch = useDispatch();
-
-  const { id, title, done, content } = props.todo;
-
-  // console.log(id, title); props 잘 받는지
-
-  const deleteClick = () => {
-    dispatch(deleteTodo(id));
-  };
-
-  const doneClick = () => {
-    dispatch(doneTodo(id));
-  };
-  const navigate = useNavigate();
+  let { todo } = props;
   return (
     <>
-      <TodosLists>
-        <p
-          className="subPage"
-          onClick={() => {
-            navigate(`/${id}`);
-          }}
-        >
-          상세보기
-        </p>
+      <TodoList>
         <span>
           <strong>제목: </strong>
         </span>
-        <h3>{title}</h3>
-        <br />
+        <h3>{todo.title}</h3>
         <span>
           <p>
             <strong>내용: </strong>
-            {content}
+            {todo.content}
           </p>
         </span>
         <div>
-          <button className="detR" onClick={deleteClick}>
-            삭제하기
-          </button>
-          <button className="detG" onClick={doneClick}>
-            {done ? "취소" : "완료"}
+          <button className="detR">삭제하기</button>
+          <button className="detG" onClick={() => {}}>
+            {todo.done ? "취소" : "완료"}
           </button>
         </div>
-      </TodosLists>
+      </TodoList>
     </>
   );
 }
 
-const TodosLists = styled.li`
+const TodoList = styled.li`
   width: 250px;
-  height: 270px;
+  height: 250px;
   padding: 2% 0% 0% 2%;
   border: 3px solid blue;
   border-radius: 10% 10% 10% 10%;
   text-align: left;
   list-style: none;
-  .subPage {
-    display: inline-block;
-    font-size: 18px;
-    width: 100%;
-    cursor: pointer;
-    :hover {
-      color: blue;
-    }
-  }
   p {
     display: inline-block;
     width: 100%;
@@ -79,7 +44,6 @@ const TodosLists = styled.li`
   h3 {
     display: inline-block;
     margin-left: 2.5%;
-    padding-left: 2%;
   }
   span {
     display: inline-block;
