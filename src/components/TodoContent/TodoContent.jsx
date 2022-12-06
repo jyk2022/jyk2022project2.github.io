@@ -11,9 +11,12 @@ function TodoContent(props) {
 
   // console.log(id, title); props 잘 받는지
 
+  //딜리트 클릭 핸들러
   const deleteClick = () => {
     dispatch(deleteTodo(id));
   };
+
+  //돈 클릭 핸들러
 
   const doneClick = () => {
     dispatch(doneTodo(id));

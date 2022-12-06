@@ -2,7 +2,6 @@ import React from "react";
 import AddTodo from "../components/Form/AddTodo";
 import TodoContent from "../components/TodoContent/TodoContent";
 import styled from "styled-components";
-
 import { useSelector } from "react-redux";
 
 function TodosHome() {
