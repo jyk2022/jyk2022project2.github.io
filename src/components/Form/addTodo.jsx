@@ -12,6 +12,7 @@ function AddTodo() {
   const dispatch = useDispatch();
   const todoss = useSelector((state) => state.todos);
 
+  console.log(todoss);
   const onSubmitHandler = (event) => {
     event.preventDefault();
     if (title.trim() === "" || content.trim() === "") {
