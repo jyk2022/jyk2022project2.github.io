@@ -1,20 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 function TodoList() {
-  const param = useParams().id;
+  const { id } = useParams();
   const globalTodoList = useSelector((state) => state.todos);
+  //구독해오고
   const { todos } = globalTodoList;
+  //스토어에서 구독해온 정보를 구조분해할당으로 해줌.
   const navigate = useNavigate();
 
   const todoslistss = todos.find((todo) => {
-    return todo.id === Number(param);
+    return todo.id === Number(id);
   });
 
   // console.log("파람스", todoslist);
-  console.log("", todoslistss);
+  // console.log("", todoslistss);
   return (
     <Subpage>
       <div>

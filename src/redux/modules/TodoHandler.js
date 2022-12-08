@@ -35,26 +35,23 @@ const initialState = {
 // Reducer
 
 const todos = (state = initialState, action) => {
-  console.log(action.payload);
+  // console.log(action.payload); 액션 넘어오는지 확인
   switch (action.type) {
     case ADDTodo:
       // console.log(action.type);
       // console.log(state);
       return {
-        ...state,
         todos: [...state.todos, action.payload],
       };
     case DeleteTodo:
-      console.log("삭제 확인중입니다", action.payload);
+      // console.log("삭제  신호 확인중입니다", action.payload);
       return {
-        ...state,
         todos: state.todos.filter((todo) => todo.id !== action.payload),
       };
     //state.filter((state) => state.id !== action.id);
     case DoneTodo:
-      console.log("완료 확인 중입니다.", action.payload);
+      // console.log("완료 신호 확인 중입니다.", action.payload);
       return {
-        ...state,
         todos: state.todos.map((todo) =>
           todo.id === action.payload ? { ...todo, done: !todo.done } : todo
         ),

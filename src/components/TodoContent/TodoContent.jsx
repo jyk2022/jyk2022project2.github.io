@@ -58,13 +58,14 @@ function TodoContent(props) {
 }
 
 const TodosLists = styled.li`
-  width: 250px;
-  height: 270px;
-  padding: 2% 0% 0% 2%;
+  display: block;
+  width: 25%;
+  padding: 1% 1% 2% 3%;
   border: 3px solid blue;
   border-radius: 10% 10% 10% 10%;
   text-align: left;
   list-style: none;
+  box-sizing: content-box;
   .subPage {
     display: inline-block;
     font-size: 18px;
@@ -77,6 +78,7 @@ const TodosLists = styled.li`
   p {
     display: inline-block;
     width: 100%;
+    text-overflow: ellipsis;
   }
   h3 {
     display: inline-block;

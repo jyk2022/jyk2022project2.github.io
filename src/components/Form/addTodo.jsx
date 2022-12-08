@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addTodo } from "../../redux/modules/TodoHandler";
 import styled from "styled-components";
 import CustomButton from "./CustomButton";
@@ -10,9 +10,9 @@ function AddTodo() {
   const [done] = useState(false);
   const [id, setId] = useState(3);
   const dispatch = useDispatch();
-  const todoss = useSelector((state) => state.todos);
+  // const todoss = useSelector((state) => state.todos); 정보를 뿌려주지 않아서 필요없음
 
-  console.log(todoss);
+  // console.log("구독한 정보 넘어옵니다", todoss);
   const onSubmitHandler = (event) => {
     event.preventDefault();
     if (title.trim() === "" || content.trim() === "") {

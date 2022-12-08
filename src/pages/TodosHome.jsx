@@ -7,6 +7,8 @@ import { useSelector } from "react-redux";
 function TodosHome() {
   const { todos } = useSelector((state) => state.todos);
 
+  // 모듈의 값을 객체가 아닌 배열로 만들어주면-> const todos = useSelector((state) => state.todos); 로 적으면 됨
+
   // console.log(todos); 데이터를 잘 받아오고 있는 지 확인
   return (
     <div>
