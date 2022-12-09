@@ -15,40 +15,48 @@ function TodoList() {
     return todo.id === Number(id);
   });
 
+  useEffect(() => {
+    if (!todoslistss) {
+      navigate("/");   
+    }
+  }, [todoslistss, navigate]);
+
   // console.log("파람스", todoslist);
   // console.log("", todoslistss);
-  return (
-    <Subpage>
-      <div>
-        <span>
-          <p>
-            <strong>번호:</strong>
-            {todoslistss.id}
+  if (todoslistss) {
+    return (
+      <Subpage>
+        <div>
+          <span>
+            <p>
+              <strong>번호:</strong>
+              {todoslistss.id}
+            </p>
+          </span>
+        </div>
+        <div>
+          <span>
+            <strong>제목:</strong>
+          </span>
+          <h3>{todoslistss.title}</h3>
+          <br></br>
+          <span>
+            <strong>내용: </strong>
+            <p>{todoslistss.content}</p>
+          </span>
+          <br></br>
+          <p
+            className="prev"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            이전으로 가기
           </p>
-        </span>
-      </div>
-      <div>
-        <span>
-          <strong>제목:</strong>
-        </span>
-        <h3>{todoslistss.title}</h3>
-        <br></br>
-        <span>
-          <strong>내용: </strong>
-          <p>{todoslistss.content}</p>
-        </span>
-        <br></br>
-        <p
-          className="prev"
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          이전으로 가기
-        </p>
-      </div>
-    </Subpage>
-  );
+        </div>
+      </Subpage>
+    );
+  }
 }
 
 const Subpage = styled.section`
